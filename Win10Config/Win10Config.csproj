@@ -87,6 +87,7 @@
     <Compile Include="Configuration\UninstallVideo.cs" />
     <Compile Include="Configuration\UninstallXbox.cs" />
     <Compile Include="Configuration\WebSearch.cs" />
+    <Compile Include="Configuration\WebSearchUnknownTypes.cs" />
     <Compile Include="Configuration\WindowsUpdateNvidia.cs" />
     <Compile Include="Configuration\WindowsUpdateTouchpad.cs" />
     <Compile Include="frmMain.cs">
