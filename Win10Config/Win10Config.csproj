@@ -67,6 +67,7 @@
     <Compile Include="Configuration\OneDrive.cs" />
     <Compile Include="Configuration\Privacy.cs" />
     <Compile Include="Configuration\ProgramCompatibility.cs" />
+    <Compile Include="Configuration\Startmenu.cs" />
     <Compile Include="Configuration\Uninstall3DBuilder.cs" />
     <Compile Include="Configuration\UninstallAlarms.cs" />
     <Compile Include="Configuration\UninstallBingFinance.cs" />
