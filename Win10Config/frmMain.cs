@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Principal;
@@ -75,6 +76,10 @@ namespace Win10Config
             else
             {
                 MessageBox.Show("All Options have completed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (MessageBox.Show("To apply the settings you need to restart your computer. Would you like to restart now?", "Restart neede", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Process.Start("shutdown.exe", "-r -t 0");
             }
         }
     }
