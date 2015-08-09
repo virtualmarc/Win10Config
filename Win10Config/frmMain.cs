@@ -24,6 +24,7 @@ namespace Win10Config
         private void frmMain_Load(object sender, EventArgs e)
         {
             MessageBox.Show("You need to run this Program as Administrator (Richt Click -> Run as Administrator) or some Options won't work!", "Administrator", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Run at your own risk. I assume no liability for damages or loss of data. This Program was only tested with Windows 10 Pro, not ome or Enterprise.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             lstOptions.Items.Add(new W10ListViewItem(new RegistredOwner()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginHorizontal()));
@@ -31,6 +32,24 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new LockScreen()));
             lstOptions.Items.Add(new W10ListViewItem(new Uninstall3DBuilder()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallBingFinance()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallBingNews()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallBingSports()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallBingWeather()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallGetStarted()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallGetOffice()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallSolitaire()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallOneNote()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallPeople()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallPhotos()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallAlarms()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallCalculator()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallCamera()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallMaps()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallPhone()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallSoundRecorder()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallXbox()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallMusic()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallVideo()));
         }
 
         private void lstOptions_MouseDoubleClick(object sender, MouseEventArgs e)

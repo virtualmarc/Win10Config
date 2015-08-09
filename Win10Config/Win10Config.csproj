@@ -26,12 +26,16 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Win10Config.Program</StartupObject>
@@ -58,7 +62,25 @@
     <Compile Include="Configuration\LockScreen.cs" />
     <Compile Include="Configuration\OneDrive.cs" />
     <Compile Include="Configuration\Uninstall3DBuilder.cs" />
+    <Compile Include="Configuration\UninstallAlarms.cs" />
     <Compile Include="Configuration\UninstallBingFinance.cs" />
+    <Compile Include="Configuration\UninstallBingNews.cs" />
+    <Compile Include="Configuration\UninstallBingSports.cs" />
+    <Compile Include="Configuration\UninstallBingWeather.cs" />
+    <Compile Include="Configuration\UninstallCalculator.cs" />
+    <Compile Include="Configuration\UninstallCamera.cs" />
+    <Compile Include="Configuration\UninstallGetOffice.cs" />
+    <Compile Include="Configuration\UninstallGetStarted.cs" />
+    <Compile Include="Configuration\UninstallMaps.cs" />
+    <Compile Include="Configuration\UninstallMusic.cs" />
+    <Compile Include="Configuration\UninstallOneNote.cs" />
+    <Compile Include="Configuration\UninstallPeople.cs" />
+    <Compile Include="Configuration\UninstallPhone.cs" />
+    <Compile Include="Configuration\UninstallPhotos.cs" />
+    <Compile Include="Configuration\UninstallSolitaire.cs" />
+    <Compile Include="Configuration\UninstallSoundRecorder.cs" />
+    <Compile Include="Configuration\UninstallVideo.cs" />
+    <Compile Include="Configuration\UninstallXbox.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
