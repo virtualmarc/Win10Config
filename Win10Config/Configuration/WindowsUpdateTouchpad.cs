@@ -10,19 +10,19 @@ using Win10Config.Utils;
 
 namespace Win10Config.Configuration
 {
-    class WindowsUpdateNvidia : IConfiguration
+    class WindowsUpdateTouchpad : IConfiguration
     {
         private Boolean bRun = false;
         private String sError = "";
 
         public void changeValue()
         {
-            bRun = Input.inputBoolean(getDisplayName(), "Disable nvidia Drivers from Windows Update?", bRun);
+            bRun = Input.inputBoolean(getDisplayName(), "Disable Touchpad Drivers (Synaptics and ELAN) from Windows Update?", bRun);
         }
 
         public string getDisplayName()
         {
-            return "Disable nvidia Drivers from Windows Update";
+            return "Disable Touchpad Drivers (Synaptics and ELAN) from Windows Update";
         }
 
         public string getDisplayValue()
@@ -44,8 +44,11 @@ namespace Win10Config.Configuration
                     PowerShell ps = PowerShell.Create();
                     ps.AddScript("Set-ExecutionPolicy Unrestricted -Force \r\n" +
                         "Import-Module PSWindowsUpdate \r\n" +
-                        "Hide-WUUpdate -Title \"NVIDIA *\" -HideStatus:$true -Confirm:$false");
-                    ps.Invoke();
+                        "Hide-WUUpdate -Title \"Synaptics*\" -HideStatus:$true -Confirm:$false \r\n" +
+                        "Hide-WUUpdate -Title \"ELAN*\" -HideStatus:$true -Confirm:$false");
+                    try {
+                        ps.Invoke();
+                    } catch (Exception) { }
                 }
                 return true;
             }

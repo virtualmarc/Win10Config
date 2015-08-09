@@ -1,5 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +53,8 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new UninstallXbox()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallMusic()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallVideo()));
+            lstOptions.Items.Add(new W10ListViewItem(new WindowsUpdateNvidia()));
+            lstOptions.Items.Add(new W10ListViewItem(new WindowsUpdateTouchpad()));
         }
 
         private void lstOptions_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -66,6 +68,7 @@ namespace Win10Config
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            btnRun.Enabled = false;
             Boolean bError = false;
             String sErrorText = "";
             foreach (W10ListViewItem item in lstOptions.Items)
@@ -106,6 +109,7 @@ namespace Win10Config
             {
                 Process.Start("shutdown.exe", "-r -t 0");
             }
+            btnRun.Enabled = true;
         }
     }
 }
