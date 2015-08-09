@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using System.Windows.Forms;
 
 namespace Win10Config.Utils
 {
@@ -24,6 +25,23 @@ namespace Win10Config.Utils
                 return sDefault;
             }
             return sValue;
+        }
+
+        /// <summary>
+        /// Show Boolean Input Dialog
+        /// </summary>
+        /// <param name="sTitle">Dialog Title</param>
+        /// <param name="sText">Dialog Text</param>
+        /// <param name="bDefault">Default Value</param>
+        /// <returns>true if Yes, false if No, default if Cancel</returns>
+        public static Boolean inputBoolean(String sTitle, String sText, Boolean bDefault)
+        {
+            DialogResult result = MessageBox.Show(sText, sTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+            {
+                return bDefault;
+            }
+            return result == DialogResult.Yes;
         }
     }
 }

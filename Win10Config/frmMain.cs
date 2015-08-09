@@ -28,6 +28,9 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new RegistredOwner()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginHorizontal()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginVertical()));
+            lstOptions.Items.Add(new W10ListViewItem(new LockScreen()));
+            lstOptions.Items.Add(new W10ListViewItem(new Uninstall3DBuilder()));
+            lstOptions.Items.Add(new W10ListViewItem(new UninstallBingFinance()));
         }
 
         private void lstOptions_MouseDoubleClick(object sender, MouseEventArgs e)
