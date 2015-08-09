@@ -32,6 +32,7 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginHorizontal()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginVertical()));
             lstOptions.Items.Add(new W10ListViewItem(new LockScreen()));
+            lstOptions.Items.Add(new W10ListViewItem(new NumLock()));
             lstOptions.Items.Add(new W10ListViewItem(new Cortana()));
             lstOptions.Items.Add(new W10ListViewItem(new WebSearch()));
             lstOptions.Items.Add(new W10ListViewItem(new BandwidthLimit()));

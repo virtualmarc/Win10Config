@@ -64,6 +64,7 @@
     <Compile Include="Configuration\IconMarginHorizontal.cs" />
     <Compile Include="Configuration\IconMarginVertical.cs" />
     <Compile Include="Configuration\LockScreen.cs" />
+    <Compile Include="Configuration\NumLock.cs" />
     <Compile Include="Configuration\OneDrive.cs" />
     <Compile Include="Configuration\Privacy.cs" />
     <Compile Include="Configuration\ProgramCompatibility.cs" />
