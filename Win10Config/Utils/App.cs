@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Win10Config.Utils
 {
@@ -20,8 +21,7 @@ namespace Win10Config.Utils
             try {
                 ps.Invoke();
             }
-            catch (Exception)
-            {}
+            catch (Exception) {}
             ps.Commands.Clear();
             ps.AddCommand("Get-AppxPackage");
             ps.AddArgument("*" + sName + "*");
@@ -30,22 +30,14 @@ namespace Win10Config.Utils
             {
                 ps.Invoke();
             }
-            catch (Exception)
-            { }
+            catch (Exception) {}
             ps.Commands.Clear();
-            ps.AddCommand("Get-AppxProvisionedPackage");
-            ps.AddArgument("-Online");
-            ps.AddCommand("where");
-            ps.AddArgument("-Property DisplayName");
-            ps.AddArgument("-eq " + sName);
-            ps.AddCommand("Remove-AppxProvisionedPackage");
-            ps.AddArgument("-Online");
+            ps.AddScript("Get-AppxProvisionedPackage -Online | where -Property DisplayName -eq " + sName + " | Remove-AppxProvisionedPackage -Online");
             try
             {
                 ps.Invoke();
             }
-            catch (Exception)
-            { }
+            catch (Exception ) {}
             String[] dirs = Directory.GetDirectories(@"C:\Program Files\WindowsApps", "*" + sName + "*");
             foreach (String dir in dirs)
             {
