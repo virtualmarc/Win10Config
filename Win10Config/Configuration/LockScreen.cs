@@ -35,7 +35,7 @@ namespace Win10Config.Configuration
         {
             try
             {
-                Registry.SetValue(sRegistryKey, sRegistryValue, bRun ? 0x1 : 0x0);
+                Registry.SetValue(sRegistryKey, sRegistryValue, bRun ? 0x1 : 0x0, RegistryValueKind.DWord);
                 return true;
             }
             catch (Exception ex)

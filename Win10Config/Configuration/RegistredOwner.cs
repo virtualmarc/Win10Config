@@ -45,7 +45,7 @@ namespace Win10Config.Configuration
         {
             try
             {
-                Registry.SetValue(sRegistryKey, sRegistryValue, sOwnerName);
+                Registry.SetValue(sRegistryKey, sRegistryValue, sOwnerName, RegistryValueKind.String);
                 return true;
             }
             catch (Exception ex)

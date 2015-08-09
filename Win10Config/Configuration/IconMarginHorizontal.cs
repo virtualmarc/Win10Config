@@ -49,7 +49,7 @@ namespace Win10Config.Configuration
         {
             try
             {
-                Registry.SetValue(sRegistryKey, sRegistryValue, sValue);
+                Registry.SetValue(sRegistryKey, sRegistryValue, sValue, RegistryValueKind.String);
                 return true;
             }
             catch (Exception ex)

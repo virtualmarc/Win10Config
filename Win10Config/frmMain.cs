@@ -30,6 +30,7 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginHorizontal()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginVertical()));
             lstOptions.Items.Add(new W10ListViewItem(new LockScreen()));
+            lstOptions.Items.Add(new W10ListViewItem(new OneDrive()));
             lstOptions.Items.Add(new W10ListViewItem(new Uninstall3DBuilder()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallBingFinance()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallBingNews()));
