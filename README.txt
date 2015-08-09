@@ -7,6 +7,7 @@ I assume no liability for damages or loss of data.
 !!!IMPORTANT!!!
 Before executing:
 Copy PSWindowsUpdate to C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+(Manually or run copyPSWindowsUpdate.cmd)
 
 You need to run the program as Administrator (Right click -> Run as Administrator).
 
