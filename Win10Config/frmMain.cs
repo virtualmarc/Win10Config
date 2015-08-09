@@ -38,6 +38,7 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new AskRunExeMsi()));
             lstOptions.Items.Add(new W10ListViewItem(new ProgramCompatibility()));
             lstOptions.Items.Add(new W10ListViewItem(new WebSearchUnknownTypes()));
+            lstOptions.Items.Add(new W10ListViewItem(new Privacy()));
             lstOptions.Items.Add(new W10ListViewItem(new OneDrive()));
             lstOptions.Items.Add(new W10ListViewItem(new Uninstall3DBuilder()));
             lstOptions.Items.Add(new W10ListViewItem(new UninstallBingFinance()));
