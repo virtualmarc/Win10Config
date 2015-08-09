@@ -57,6 +57,7 @@
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\AskRunExeMsi.cs" />
     <Compile Include="Configuration\BandwidthLimit.cs" />
     <Compile Include="Configuration\Cortana.cs" />
     <Compile Include="Configuration\IconMarginHorizontal.cs" />
