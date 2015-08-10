@@ -19,7 +19,12 @@ namespace Win10Config.Configuration
 
         public BlockMSAccount()
         {
-            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x1) == 0x0;
+            try {
+                bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x1) == 0x0;
+            } catch (Exception)
+            {
+                bRun = false;
+            }
         }
 
         public void changeValue()
