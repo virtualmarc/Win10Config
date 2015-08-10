@@ -21,6 +21,8 @@ namespace Win10Config
         public frmMain()
         {
             InitializeComponent();
+            // Dangerous, don't do this at Home ;)
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -79,9 +81,9 @@ namespace Win10Config
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            btnRun.Enabled = false;
             if (!bgwRun.IsBusy)
             {
+                btnRun.Enabled = false;
                 bgwRun.RunWorkerAsync();
             }
         }
@@ -103,11 +105,11 @@ namespace Win10Config
                 }
                 if (bSuccess)
                 {
-                    lstOptions.Invoke((Action)(() => { item.BackColor = Color.Green; }));
+                    item.BackColor = Color.Green;
                 }
                 else
                 {
-                    lstOptions.Invoke((Action)(() => { item.BackColor = Color.Red; }));
+                    item.BackColor = Color.Red;
                     bError = true;
                     sErrorText += item.config.getDisplayName();
                     sErrorText += ":\r\n";
@@ -118,7 +120,7 @@ namespace Win10Config
             if (bError)
             {
                 MessageBox.Show("At least one Option was not successful", "An Error occoured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                new frmErrorLog(sErrorText).Show();
+                bgwRun.ReportProgress(100, new Object[] { false, sErrorText });
             }
             else
             {
@@ -129,6 +131,16 @@ namespace Win10Config
                 Process.Start("shutdown.exe", "-r -t 0");
             }
             btnRun.Invoke((Action)(() => { btnRun.Enabled = true; }));
+        }
+
+        private void bgwRun_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            try {
+                if (e.ProgressPercentage == 100 && (bool)((Object[])e.UserState)[0] == false)
+                {
+                    new frmErrorLog((String)((Object[])e.UserState)[1]).Show();
+                }
+            } catch (Exception) { }
         }
     }
 }

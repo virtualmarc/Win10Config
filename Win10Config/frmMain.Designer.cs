@@ -74,7 +74,9 @@
             // 
             // bgwRun
             // 
+            this.bgwRun.WorkerReportsProgress = true;
             this.bgwRun.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRun_DoWork);
+            this.bgwRun.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwRun_ProgressChanged);
             // 
             // frmMain
             // 
