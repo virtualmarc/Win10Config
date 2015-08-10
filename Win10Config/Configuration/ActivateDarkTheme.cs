@@ -22,8 +22,13 @@ namespace Win10Config.Configuration
         {
             Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("Microsoft").OpenSubKey("Windows").OpenSubKey("CurrentVersion").OpenSubKey("Themes", true).CreateSubKey("Personalize");
             Registry.CurrentUser.OpenSubKey("SOFTWARE").OpenSubKey("Microsoft").OpenSubKey("Windows").OpenSubKey("CurrentVersion").OpenSubKey("Themes", true).CreateSubKey("Personalize");
-            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x1) == 0x0;
-        }
+            try {
+                bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x1) == 0x0;
+            } catch (Exception)
+            {
+                bRun = false;
+            }
+}
 
         public void changeValue()
         {

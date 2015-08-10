@@ -20,7 +20,13 @@ namespace Win10Config.Configuration
 
         public NumLock()
         {
-            bRun = (String)Registry.GetValue(sRegistryKey, sRegistryValue, "2147483648") == "2147483650";
+            try {
+                bRun = (String)Registry.GetValue(sRegistryKey, sRegistryValue, "2147483648") == "2147483650";
+            }
+            catch (Exception)
+            {
+                bRun = false;
+            }
         }
 
         public void changeValue()

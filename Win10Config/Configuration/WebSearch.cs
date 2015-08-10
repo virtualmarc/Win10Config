@@ -21,7 +21,13 @@ namespace Win10Config.Configuration
 
         public WebSearch()
         {
-            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x0) == 0x1;
+            try {
+                bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x0) == 0x1;
+            }
+            catch (Exception)
+            {
+                bRun = false;
+            }
         }
 
         public void changeValue()
