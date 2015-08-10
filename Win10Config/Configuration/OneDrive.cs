@@ -77,12 +77,12 @@ namespace Win10Config.Configuration
                 catch (Exception) { }
                 try
                 {
-                    Registry.ClassesRoot.OpenSubKey("CLSID").DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    Registry.ClassesRoot.OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
                 }
                 catch (Exception) { }
                 try
                 {
-                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID").DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
                 }
                 catch (Exception) { }
                 String[] dirs = Directory.GetDirectories(@"C:\Windows\WinSxS", "*onedrive*");
@@ -95,13 +95,13 @@ namespace Win10Config.Configuration
                 }
                 try
                 {
-                    Registry.ClassesRoot.OpenSubKey("CLSID").CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    Registry.ClassesRoot.OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
                 } catch (Exception) { }
                 Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
                 Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "System.IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
                 try
                 {
-                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID").CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
                 }
                 catch (Exception) { }
                 Registry.SetValue(@"HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
