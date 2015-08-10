@@ -37,6 +37,8 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new NumLock()));
             lstOptions.Items.Add(new W10ListViewItem(new Cortana()));
             lstOptions.Items.Add(new W10ListViewItem(new WebSearch()));
+            lstOptions.Items.Add(new W10ListViewItem(new BlockMSAccount()));
+            lstOptions.Items.Add(new W10ListViewItem(new DisableLoginOptions()));
             lstOptions.Items.Add(new W10ListViewItem(new BandwidthLimit()));
             lstOptions.Items.Add(new W10ListViewItem(new AskRunExeMsi()));
             lstOptions.Items.Add(new W10ListViewItem(new ProgramCompatibility()));

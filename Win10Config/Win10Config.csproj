@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Configuration\AskRunExeMsi.cs" />
     <Compile Include="Configuration\BandwidthLimit.cs" />
+    <Compile Include="Configuration\BlockMSAccount.cs" />
     <Compile Include="Configuration\Cortana.cs" />
+    <Compile Include="Configuration\DisableLoginOptions.cs" />
     <Compile Include="Configuration\IconMarginHorizontal.cs" />
     <Compile Include="Configuration\IconMarginVertical.cs" />
     <Compile Include="Configuration\LockScreen.cs" />
