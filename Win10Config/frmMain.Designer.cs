@@ -32,6 +32,7 @@
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnRun = new System.Windows.Forms.Button();
+            this.bgwRun = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // lstOptions
@@ -71,6 +72,10 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // bgwRun
+            // 
+            this.bgwRun.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwRun_DoWork);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +99,7 @@
         private System.Windows.Forms.ColumnHeader chName;
         private System.Windows.Forms.ColumnHeader chValue;
         private System.Windows.Forms.Button btnRun;
+        private System.ComponentModel.BackgroundWorker bgwRun;
     }
 }
 

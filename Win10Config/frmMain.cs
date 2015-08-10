@@ -80,6 +80,14 @@ namespace Win10Config
         private void btnRun_Click(object sender, EventArgs e)
         {
             btnRun.Enabled = false;
+            if (!bgwRun.IsBusy)
+            {
+                bgwRun.RunWorkerAsync();
+            }
+        }
+
+        private void bgwRun_DoWork(object sender, DoWorkEventArgs e)
+        {
             Boolean bError = false;
             String sErrorText = "";
             foreach (W10ListViewItem item in lstOptions.Items)
@@ -95,11 +103,11 @@ namespace Win10Config
                 }
                 if (bSuccess)
                 {
-                    item.BackColor = Color.Green;
+                    lstOptions.Invoke((Action)(() => { item.BackColor = Color.Green; }));
                 }
                 else
                 {
-                    item.BackColor = Color.Red;
+                    lstOptions.Invoke((Action)(() => { item.BackColor = Color.Red; }));
                     bError = true;
                     sErrorText += item.config.getDisplayName();
                     sErrorText += ":\r\n";
@@ -120,7 +128,7 @@ namespace Win10Config
             {
                 Process.Start("shutdown.exe", "-r -t 0");
             }
-            btnRun.Enabled = true;
+            btnRun.Invoke((Action)(() => { btnRun.Enabled = true; }));
         }
     }
 }
