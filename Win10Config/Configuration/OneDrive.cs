@@ -38,80 +38,89 @@ namespace Win10Config.Configuration
 
         public bool run()
         {
-            try
+            if (bRun)
             {
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows", "DisableFileSyncNGSC", 0x1, RegistryValueKind.DWord);
-                Process.Start("taskkill.exe", "/f /im OneDrive.exe");
-                String sSysRoot = Environment.GetEnvironmentVariable("SystemRoot");
-                String sPath = sSysRoot;
-                if (File.Exists(sSysRoot + @"\System32\OneDriveSetup.exe"))
-                {
-                    sPath += @"\System32\OneDriveSetup.exe";
-                }
-                else
-                {
-                    sPath += @"\SysWOW64\OneDriveSetup.exe";
-                }
-                Process.Start(sPath, "/uninstall");
-                String sUserProfile = Environment.GetEnvironmentVariable("UserProfile");
-                String sLocalAppData = Environment.GetEnvironmentVariable("LocalAppData");
-                String sProgramData = Environment.GetEnvironmentVariable("ProgramData");
                 try
                 {
-                    Directory.Delete(sUserProfile + @"\OneDrive", true);
-                } catch (Exception) { }
-                try
-                {
-                    Directory.Delete(sLocalAppData + @"\Microsoft\OneDrive", true);
-                }
-                catch (Exception) { }
-                try
-                {
-                    Directory.Delete(sProgramData + @"\Microsoft OneDrive", true);
-                }
-                catch (Exception) { }
-                try
-                {
-                    Directory.Delete(@"C:\OneDriveTemp", true);
-                }
-                catch (Exception) { }
-                try
-                {
-                    Registry.ClassesRoot.OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
-                }
-                catch (Exception) { }
-                try
-                {
-                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
-                }
-                catch (Exception) { }
-                String[] dirs = Directory.GetDirectories(@"C:\Windows\WinSxS", "*onedrive*");
-                foreach (String dir in dirs)
-                {
+                    Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows", "DisableFileSyncNGSC", 0x1, RegistryValueKind.DWord);
+                    Process.Start("taskkill.exe", "/f /im OneDrive.exe");
+                    String sSysRoot = Environment.GetEnvironmentVariable("SystemRoot");
+                    String sPath = sSysRoot;
+                    if (File.Exists(sSysRoot + @"\System32\OneDriveSetup.exe"))
+                    {
+                        sPath += @"\System32\OneDriveSetup.exe";
+                    }
+                    else
+                    {
+                        sPath += @"\SysWOW64\OneDriveSetup.exe";
+                    }
+                    Process.Start(sPath, "/uninstall");
+                    String sUserProfile = Environment.GetEnvironmentVariable("UserProfile");
+                    String sLocalAppData = Environment.GetEnvironmentVariable("LocalAppData");
+                    String sProgramData = Environment.GetEnvironmentVariable("ProgramData");
                     try
                     {
-                        Directory.Delete(dir, true);
-                    } catch (Exception) { }
+                        Directory.Delete(sUserProfile + @"\OneDrive", true);
+                    }
+                    catch (Exception) { }
+                    try
+                    {
+                        Directory.Delete(sLocalAppData + @"\Microsoft\OneDrive", true);
+                    }
+                    catch (Exception) { }
+                    try
+                    {
+                        Directory.Delete(sProgramData + @"\Microsoft OneDrive", true);
+                    }
+                    catch (Exception) { }
+                    try
+                    {
+                        Directory.Delete(@"C:\OneDriveTemp", true);
+                    }
+                    catch (Exception) { }
+                    try
+                    {
+                        Registry.ClassesRoot.OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    }
+                    catch (Exception) { }
+                    try
+                    {
+                        Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).DeleteSubKeyTree("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    }
+                    catch (Exception) { }
+                    String[] dirs = Directory.GetDirectories(@"C:\Windows\WinSxS", "*onedrive*");
+                    foreach (String dir in dirs)
+                    {
+                        try
+                        {
+                            Directory.Delete(dir, true);
+                        }
+                        catch (Exception) { }
+                    }
+                    try
+                    {
+                        Registry.ClassesRoot.OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    }
+                    catch (Exception) { }
+                    Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "System.IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
+                    try
+                    {
+                        Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    }
+                    catch (Exception) { }
+                    Registry.SetValue(@"HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
+                    Registry.SetValue(@"HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "System.IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
+                    return true;
                 }
-                try
+                catch (Exception ex)
                 {
-                    Registry.ClassesRoot.OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
-                } catch (Exception) { }
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "System.IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
-                try
-                {
-                    Registry.ClassesRoot.OpenSubKey("Wow6432Node").OpenSubKey("CLSID", true).CreateSubKey("{018D5C66-4533-4307-9B53-224DE2ED1FE6}");
+                    sError += ex.Message;
+                    return false;
                 }
-                catch (Exception) { }
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
-                Registry.SetValue(@"HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}", "System.IsPinnedToNameSpaceTree", 0x0, RegistryValueKind.DWord);
-                return true;
-            }
-            catch (Exception ex)
+            } else
             {
-                sError += ex.Message;
-                return false;
+                return true;
             }
         }
     }
