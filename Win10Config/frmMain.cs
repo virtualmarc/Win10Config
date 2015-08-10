@@ -33,6 +33,7 @@ namespace Win10Config
             lstOptions.Items.Add(new W10ListViewItem(new RegistredOwner()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginHorizontal()));
             lstOptions.Items.Add(new W10ListViewItem(new IconMarginVertical()));
+            lstOptions.Items.Add(new W10ListViewItem(new ActivateDarkTheme()));
             lstOptions.Items.Add(new W10ListViewItem(new LockScreen()));
             lstOptions.Items.Add(new W10ListViewItem(new NumLock()));
             lstOptions.Items.Add(new W10ListViewItem(new Cortana()));
