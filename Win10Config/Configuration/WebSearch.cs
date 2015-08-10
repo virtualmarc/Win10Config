@@ -19,6 +19,11 @@ namespace Win10Config.Configuration
         private String sRegistryValue2 = "ConnectedSearchUseWeb"; // 0x0
         private String sRegistryValue3 = "ConnectedSearchUseWebOverMeteredConnections"; // 0x0
 
+        public WebSearch()
+        {
+            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x0) == 0x1;
+        }
+
         public void changeValue()
         {
             bRun = Input.inputBoolean(getDisplayName(), "Disable Web Search?", bRun);

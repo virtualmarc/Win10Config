@@ -18,6 +18,11 @@ namespace Win10Config.Configuration
         private String sRegistryKey = @"HKEY_USERS\.DEFAULT\Control Panel\Keyboard";
         private String sRegistryValue = "InitialKeyboardIndicators"; // 0x1
 
+        public NumLock()
+        {
+            bRun = (String)Registry.GetValue(sRegistryKey, sRegistryValue, "2147483648") == "2147483650";
+        }
+
         public void changeValue()
         {
             bRun = Input.inputBoolean(getDisplayName(), "Enable Num Lock on Boot?", bRun);

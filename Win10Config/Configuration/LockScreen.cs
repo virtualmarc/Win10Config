@@ -16,6 +16,11 @@ namespace Win10Config.Configuration
         private String sRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization";
         private String sRegistryValue = "NoLockScreen";
 
+        public LockScreen()
+        {
+            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x0) == 0x1;
+        }
+
         public void changeValue()
         {
             bRun = Input.inputBoolean(getDisplayName(), "Disable LockScreen?", bRun);

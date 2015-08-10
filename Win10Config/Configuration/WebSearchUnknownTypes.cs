@@ -17,6 +17,11 @@ namespace Win10Config.Configuration
         private String sRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer";
         private String sRegistryValue = "NoInternetOpenWith";
 
+        public WebSearchUnknownTypes()
+        {
+            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x0) == 0x1;
+        }
+
         public void changeValue()
         {
             bRun = Input.inputBoolean(getDisplayName(), "Disable WebSearch for unknown file types?", bRun);

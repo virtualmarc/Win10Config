@@ -17,6 +17,11 @@ namespace Win10Config.Configuration
         private String sRegistryKey = @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search";
         private String sRegistryValue = "AllowCortana";
 
+        public Cortana()
+        {
+            bRun = (int)Registry.GetValue(sRegistryKey, sRegistryValue, 0x1) == 0x0;
+        }
+
         public void changeValue()
         {
             bRun = Input.inputBoolean(getDisplayName(), "Disable Cortana?", bRun);
